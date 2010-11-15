@@ -1,0 +1,63 @@
+
+use strict;
+use warnings;
+
+
+
+use ExtUtils::MakeMaker 6.31;
+
+
+
+my %WriteMakefileArgs = (
+  'ABSTRACT' => 'Easy validation and transformation of scalar tree structures',
+  'AUTHOR' => 'Oliver Charles',
+  'BUILD_REQUIRES' => {},
+  'CONFIGURE_REQUIRES' => {
+    'ExtUtils::MakeMaker' => '6.31'
+  },
+  'DISTNAME' => 'Data-TreeValidator',
+  'EXE_FILES' => [],
+  'LICENSE' => 'perl',
+  'NAME' => 'Data::TreeValidator',
+  'PREREQ_PM' => {
+    'CGI::Expand' => '2.02',
+    'Moose' => '1.16',
+    'MooseX::Params::Validate' => '0.14',
+    'MooseX::Types' => '0.24',
+    'MooseX::Types::Structured' => '0.23',
+    'Sub::Exporter' => '0.982',
+    'Test::Fatal' => '0.003',
+    'Test::More' => '0.96',
+    'Test::Routine' => '0.004',
+    'Throwable' => '0.102080',
+    'Try::Tiny' => '0.07',
+    'aliased' => '0.30',
+    'namespace::autoclean' => '0.11'
+  },
+  'VERSION' => '0.01',
+  'test' => {
+    'TESTS' => 't/*.t t/Tests/Data/TreeValidator/*.t t/Tests/Data/TreeValidator/Result/*.t'
+  }
+);
+
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
+
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
+
