@@ -1,6 +1,6 @@
 package Data::TreeValidator::Result;
 BEGIN {
-  $Data::TreeValidator::Result::VERSION = '0.01';
+  $Data::TreeValidator::Result::VERSION = '0.02';
 }
 # ABSTRACT: Role specifying the result of processing
 use Moose::Role;
@@ -18,9 +18,11 @@ has 'input' => (
 has 'errors' => (
     isa => ArrayRef,
     traits => [ 'Array' ],
+    default => sub { [] },
     handles => {
         errors => 'elements',
         error_count => 'count',
+        add_error => 'push'
     }
 );
 

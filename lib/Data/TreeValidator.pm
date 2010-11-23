@@ -1,6 +1,6 @@
 package Data::TreeValidator;
 BEGIN {
-  $Data::TreeValidator::VERSION = '0.01';
+  $Data::TreeValidator::VERSION = '0.02';
 }
 # ABSTRACT: Easy validation and transformation of scalar tree structures
 use strict;

@@ -1,6 +1,6 @@
 package Data::TreeValidator::Node;
 BEGIN {
-  $Data::TreeValidator::Node::VERSION = '0.01';
+  $Data::TreeValidator::Node::VERSION = '0.02';
 }
 # ABSTRACT: Represents a node in the validation tree specification
 use Moose::Role;

@@ -1,13 +1,13 @@
 package Data::TreeValidator::Branch;
 BEGIN {
-  $Data::TreeValidator::Branch::VERSION = '0.01';
+  $Data::TreeValidator::Branch::VERSION = '0.02';
 }
 # ABSTRACT: A branch of tree validation
 use Moose;
 use namespace::autoclean;
 
 use Data::TreeValidator::Types qw( HashTree Node );
-use MooseX::Types::Moose qw( Str );
+use MooseX::Types::Moose qw( CodeRef Maybe Str );
 use MooseX::Types::Structured qw( Map );
 
 use aliased 'Data::TreeValidator::Result::Branch' => 'Result',;
@@ -27,20 +27,41 @@ has 'children' => (
     }
 );
 
+has 'cross_validator' => (
+    isa => CodeRef,
+    traits => [ 'Code' ],
+    default => sub { sub {} },
+    handles => {
+        cross_validate => 'execute',
+    }
+);
+
 sub process {
     my $self = shift;
-    my ($tree) = pos_validated_list(\@_,
-        { isa => HashTree, coerce => 1 }
+    my ($tree) = pos_validated_list([ shift ],
+        { isa => Maybe[HashTree], coerce => 1 }
     );
+    my %args = @_;
 
-    return Result->new(
+    my $result = Result->new(
         input => $tree,
         results => {
             map {
-                $_ => $self->child($_)->process($tree->{$_})
+                my $process = $tree->{$_} || $args{initialize}->{$_};
+                $_ => $self->child($_)->process($process)
             } $self->child_names
         }
     );
+
+    # XXX Try::Tiny doesn't work here -- why? 
+    eval {
+        $self->cross_validate($result->clean);
+    };
+    if ($@) {
+        $result->add_error($@);
+    }
+
+    return $result;
 }
 
 1;

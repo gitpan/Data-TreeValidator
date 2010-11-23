@@ -1,6 +1,6 @@
 package Data::TreeValidator::Result::Branch;
 BEGIN {
-  $Data::TreeValidator::Result::Branch::VERSION = '0.01';
+  $Data::TreeValidator::Result::Branch::VERSION = '0.02';
 }
 # ABSTRACT: Contains the result of processing a branch
 use Moose;
@@ -25,6 +25,7 @@ has 'results' => (
 
 sub valid {
     my $self = shift;
+    ($self->errors == 0) &&
     (grep { $_->valid } $self->results) == $self->result_count;
 }
 

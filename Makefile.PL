@@ -25,6 +25,7 @@ my %WriteMakefileArgs = (
     'MooseX::Params::Validate' => '0.14',
     'MooseX::Types' => '0.24',
     'MooseX::Types::Structured' => '0.23',
+    'Set::Object' => '0',
     'Sub::Exporter' => '0.982',
     'Test::Fatal' => '0.003',
     'Test::More' => '0.96',
@@ -34,9 +35,9 @@ my %WriteMakefileArgs = (
     'aliased' => '0.30',
     'namespace::autoclean' => '0.11'
   },
-  'VERSION' => '0.01',
+  'VERSION' => '0.02',
   'test' => {
-    'TESTS' => 't/*.t t/Tests/Data/TreeValidator/*.t t/Tests/Data/TreeValidator/Result/*.t'
+    'TESTS' => 't/*.t t/Tests/Data/TreeValidator/*.t t/Tests/Data/TreeValidator/Result/*.t t/functional/*.t'
   }
 );
 

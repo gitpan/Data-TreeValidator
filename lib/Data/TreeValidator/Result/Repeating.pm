@@ -1,6 +1,6 @@
 package Data::TreeValidator::Result::Repeating;
 BEGIN {
-  $Data::TreeValidator::Result::Repeating::VERSION = '0.01';
+  $Data::TreeValidator::Result::Repeating::VERSION = '0.02';
 }
 # ABSTRACT: Returns the result of processing a repeating branch
 use Moose;

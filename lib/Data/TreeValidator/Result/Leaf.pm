@@ -1,6 +1,6 @@
 package Data::TreeValidator::Result::Leaf;
 BEGIN {
-  $Data::TreeValidator::Result::Leaf::VERSION = '0.01';
+  $Data::TreeValidator::Result::Leaf::VERSION = '0.02';
 }
 # ABSTRACT: The result of processing a leaf node
 use Moose;

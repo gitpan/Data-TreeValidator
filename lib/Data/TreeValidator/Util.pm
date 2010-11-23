@@ -1,6 +1,6 @@
 package Data::TreeValidator::Util;
 BEGIN {
-  $Data::TreeValidator::Util::VERSION = '0.01';
+  $Data::TreeValidator::Util::VERSION = '0.02';
 }
 # ABSTRACT: Helpful utilities for working with tree validators
 use strict;
@@ -13,7 +13,7 @@ use Sub::Exporter -setup => {
 {
     package Data::TreeValidator::ConstraintError;
 BEGIN {
-  $Data::TreeValidator::ConstraintError::VERSION = '0.01';
+  $Data::TreeValidator::ConstraintError::VERSION = '0.02';
 }
     use Moose;
     with 'Throwable';

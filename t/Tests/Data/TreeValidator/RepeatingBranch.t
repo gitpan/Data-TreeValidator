@@ -57,6 +57,26 @@ test 'multiple repetitions' => sub {
     ], 'result has correct clean data');
 };
 
+test 'repeating branch with initializers' => sub {
+    my $leaf = MockLeaf->new;
+    my $branch = RepeatingBranch->new(
+        children => {
+            child => $leaf
+        }
+    );
+   
+    my $initialize = [
+        { child => 'First value' },
+        { child => 'Second value' }
+    ];
+    my $result = $branch->process(undef, initialize => $initialize);
+
+    ok($result->valid,
+        'processing with a initialize value gives a valid result');
+    is_deeply($result->clean => $initialize,
+        'clean value takes the initialize value');
+};
+
 run_me;
 done_testing;
 

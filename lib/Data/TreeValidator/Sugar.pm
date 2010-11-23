@@ -1,6 +1,6 @@
 package Data::TreeValidator::Sugar;
 BEGIN {
-  $Data::TreeValidator::Sugar::VERSION = '0.01';
+  $Data::TreeValidator::Sugar::VERSION = '0.02';
 }
 # ABSTRACT: Syntatic sugar for easily creating tree validators
 use strict;

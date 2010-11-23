@@ -1,6 +1,6 @@
 package Data::TreeValidator::Types;
 BEGIN {
-  $Data::TreeValidator::Types::VERSION = '0.01';
+  $Data::TreeValidator::Types::VERSION = '0.02';
 }
 # ABSTRACT: Internal data types used by Data::TreeValidator
 use MooseX::Types -declare => [qw(
@@ -39,6 +39,7 @@ role_type Result, { role => 'Data::TreeValidator::Result' };
 subtype Value, as Undef | MooseValue;
 
 subtype Constraint, as CodeRef;
+subtype Transformation, as CodeRef;
 
 1;
 
