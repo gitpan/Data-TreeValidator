@@ -1,6 +1,6 @@
 package Data::TreeValidator;
 BEGIN {
-  $Data::TreeValidator::VERSION = '0.02';
+  $Data::TreeValidator::VERSION = '0.03';
 }
 # ABSTRACT: Easy validation and transformation of scalar tree structures
 use strict;
@@ -88,7 +88,7 @@ You will probably be most intrested in the following documentation:
 
 The essentials for specifying the structure of your validation tree.
 
-=item L<Data::TreeValidator::RepeatableBranch>
+=item L<Data::TreeValidator::RepeatingBranch>
 
 A branch that can repeat it's input
 
@@ -152,7 +152,7 @@ Oliver Charles
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Oliver Charles <oliver.g.charles@googlemail.com>.
+This software is copyright (c) 2011 by Oliver Charles <oliver.g.charles@googlemail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

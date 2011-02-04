@@ -1,6 +1,6 @@
 package Data::TreeValidator::RepeatingBranch;
 BEGIN {
-  $Data::TreeValidator::RepeatingBranch::VERSION = '0.02';
+  $Data::TreeValidator::RepeatingBranch::VERSION = '0.03';
 }
 # ABSTRACT: A branch that can have its input repeated multiple times
 use Moose;
@@ -82,7 +82,7 @@ Oliver Charles
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Oliver Charles <oliver.g.charles@googlemail.com>.
+This software is copyright (c) 2011 by Oliver Charles <oliver.g.charles@googlemail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

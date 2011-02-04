@@ -35,7 +35,7 @@ my %WriteMakefileArgs = (
     'aliased' => '0.30',
     'namespace::autoclean' => '0.11'
   },
-  'VERSION' => '0.02',
+  'VERSION' => '0.03',
   'test' => {
     'TESTS' => 't/*.t t/Tests/Data/TreeValidator/*.t t/Tests/Data/TreeValidator/Result/*.t t/functional/*.t'
   }

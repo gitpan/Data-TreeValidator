@@ -1,6 +1,6 @@
 package Data::TreeValidator::Sugar;
 BEGIN {
-  $Data::TreeValidator::Sugar::VERSION = '0.02';
+  $Data::TreeValidator::Sugar::VERSION = '0.03';
 }
 # ABSTRACT: Syntatic sugar for easily creating tree validators
 use strict;
@@ -9,6 +9,8 @@ use warnings;
 use aliased 'Data::TreeValidator::Branch';
 use aliased 'Data::TreeValidator::Leaf';
 use aliased 'Data::TreeValidator::RepeatingBranch';
+
+use Data::TreeValidator::Constraints 'type';
 
 use Sub::Exporter -setup => {
     exports => [ qw( branch leaf repeating ) ],
@@ -31,7 +33,9 @@ sub branch (&;) {
 }
 
 sub leaf {
-    return Leaf->new(@_);
+    my @args = @_ == 1 ? (constraints => [ type($_[0]) ] )
+                       : @_;
+    return Leaf->new(@args);
 }
 
 sub repeating (&;) {
@@ -84,7 +88,7 @@ Oliver Charles
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Oliver Charles <oliver.g.charles@googlemail.com>.
+This software is copyright (c) 2011 by Oliver Charles <oliver.g.charles@googlemail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
