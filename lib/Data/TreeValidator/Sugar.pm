@@ -1,6 +1,6 @@
 package Data::TreeValidator::Sugar;
-BEGIN {
-  $Data::TreeValidator::Sugar::VERSION = '0.03';
+{
+  $Data::TreeValidator::Sugar::VERSION = '0.04';
 }
 # ABSTRACT: Syntatic sugar for easily creating tree validators
 use strict;
@@ -88,7 +88,7 @@ Oliver Charles
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Oliver Charles <oliver.g.charles@googlemail.com>.
+This software is copyright (c) 2012 by Oliver Charles <oliver.g.charles@googlemail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

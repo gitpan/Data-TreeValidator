@@ -1,6 +1,6 @@
 package Data::TreeValidator::Util;
-BEGIN {
-  $Data::TreeValidator::Util::VERSION = '0.03';
+{
+  $Data::TreeValidator::Util::VERSION = '0.04';
 }
 # ABSTRACT: Helpful utilities for working with tree validators
 use strict;
@@ -12,8 +12,8 @@ use Sub::Exporter -setup => {
 
 {
     package Data::TreeValidator::ConstraintError;
-BEGIN {
-  $Data::TreeValidator::ConstraintError::VERSION = '0.03';
+{
+  $Data::TreeValidator::ConstraintError::VERSION = '0.04';
 }
     use Moose;
     with 'Throwable';
@@ -63,7 +63,7 @@ Oliver Charles
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Oliver Charles <oliver.g.charles@googlemail.com>.
+This software is copyright (c) 2012 by Oliver Charles <oliver.g.charles@googlemail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

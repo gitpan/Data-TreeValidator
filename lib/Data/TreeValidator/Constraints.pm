@@ -1,6 +1,6 @@
 package Data::TreeValidator::Constraints;
-BEGIN {
-  $Data::TreeValidator::Constraints::VERSION = '0.03';
+{
+  $Data::TreeValidator::Constraints::VERSION = '0.04';
 }
 # ABSTRACT: A collection of constraints for validating data
 use strict;
@@ -24,11 +24,12 @@ sub length {
     my ($min, $max) = @args{qw( min max )};
     return sub {
         my ($input) = @_;
+        my $length = defined $input ? length($input) : 0;
 
         fail_constraint("Input must be longer than $min characters")
-            if exists $args{min} && length($input) < $min;
+            if exists $args{min} && $length < $min;
         fail_constraint("Input must be shorter than $max characters")
-            if exists $args{max} && length($input) > $max;
+            if exists $args{max} && $length > $max;
     }
 }
 
@@ -36,14 +37,16 @@ sub options {
     my $valid = set(@_);
     return sub {
         my ($input) = @_;
-        $valid->contains($input);
+        fail_constraint("Input must be a valid set member")
+          unless $valid->contains($input);
     };
 }
 
 sub type {
     my $type = shift;
     return sub {
-        $type->check(@_);
+      fail_constraint('Input must be of type: ' . $type->name . '"')
+        unless $type->check(@_);
     };
 }
 
@@ -89,7 +92,10 @@ Checks that a given input is in the set defined by C<@options>.
 
 =head2 type $type_constraint
 
-Checks that a given input satisfies a given L<Moose::Meta::TypeConstraint>.
+Checks that a given input satisfies a given L<Moose::Meta::TypeConstraint>.  E.g. 
+
+use MooseX::Types::Moose qw/Num/;
+type(Num);
 
 =head1 AUTHOR
 
@@ -97,7 +103,7 @@ Oliver Charles
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Oliver Charles <oliver.g.charles@googlemail.com>.
+This software is copyright (c) 2012 by Oliver Charles <oliver.g.charles@googlemail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -1,10 +1,11 @@
 package Data::TreeValidator::Leaf;
-BEGIN {
-  $Data::TreeValidator::Leaf::VERSION = '0.03';
+{
+  $Data::TreeValidator::Leaf::VERSION = '0.04';
 }
 # ABSTRACT: Represents a single leaf node in the validation tree specification
 use Moose;
 use namespace::autoclean;
+use 5.10.0;
 
 use Data::TreeValidator::Types qw( Constraint Transformation Value );
 use MooseX::Types::Moose qw( ArrayRef CodeRef );
@@ -43,7 +44,7 @@ sub process {
     );
     my %args = @_;
 
-    my $process = $input || $args{initialize};
+    my $process = $input // $args{initialize};
 
     my @errors;
     for my $constraint ($self->constraints) {
@@ -123,7 +124,7 @@ Oliver Charles
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Oliver Charles <oliver.g.charles@googlemail.com>.
+This software is copyright (c) 2012 by Oliver Charles <oliver.g.charles@googlemail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
